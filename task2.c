@@ -82,6 +82,7 @@ void initialize_catalog() {
    int father_to_child[clientCOUNT][2], child_to_father[clientCOUNT][2];
    pid_t pids[clientCOUNT];
    
+   srand(time(NULL));
    initialize_catalog();
    
    for (int i = 0; i < clientCOUNT; i++) {
@@ -116,8 +117,8 @@ void initialize_catalog() {
    
    for (int i = 0; i < clientCOUNT * ordersPerCLIENT; i++) {
     int product_id;
-    read(child_to_father[i][0], &product_id, sizeof(int));
-    process_order(product_id, father_to_child[1]);
+    read(child_to_father[i % clientCOUNT][0], &product_id, sizeof(int));
+    process_order(product_id, father_to_child[i % clientCOUNT]);
    }
    
    for (int i =0; i<clientCOUNT; i++) {
