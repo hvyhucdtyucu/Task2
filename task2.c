@@ -125,6 +125,11 @@ void initialize_catalog() {
     wait(NULL);
    }
    
+   for (int i = 0; i< clientCOUNT; i++) {
+    close(child_to_father[i][0]);
+    close(father_to_child[i][1]);
+   }
+   
    print_report();
    
    return 0;
