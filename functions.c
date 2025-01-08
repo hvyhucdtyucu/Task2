@@ -8,7 +8,7 @@
 void initialize_catalog(Product catalog[PRODUCT_COUNT]) {
     for (int i = 0; i < PRODUCT_COUNT; i++) {
         snprintf(catalog[i].description, sizeof(catalog[i].description), "Product %d", i + 1);
-        catalog[i].price = (float)((rand() % 1000) / 10.0); // value 0.0~99.9
+        catalog[i].price = (float)((rand() % 1000) / 10.0); // value 0.0~99.9 initially double but changed to float with casting
         catalog[i].item_count = 2; // starting stock
         catalog[i].total_requests = 0;
         catalog[i].total_sold = 0;
